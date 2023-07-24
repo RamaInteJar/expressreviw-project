@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DUMMY STOCKS DATA</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>SHOW STOCKS</h1>
     <p>SHOW</p>
-</body>
+    <h2><%= stock.name %></h2>
+    <p>Symbol: <%= stock.symbol%></p>
+    <p>Opening Price: <%= stock.openingPrice%></p>
+    <p>Closing Price: <%= stock.closingPrice%></p>
+    <p>Purchasing Price: <%= stock.purchasePrice%></p>
+    <p>Profit made: <%= stock.profit%></p>
+  </body>
 </html>

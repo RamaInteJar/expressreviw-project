@@ -10,6 +10,10 @@ const expressEjsLayouts = require("express-ejs-layouts");
 app.set("view engine", "ejs");
 app.use(expressEjsLayouts);
 
+//THERE IS A MIDDLEWARE THAT HNDLES FORM DATA, WITHOUT IT, YOU CAN NOT HANDLE FORM DATA
+//FORM DATA COMES THROUGHT req.body
+app.use(express.urlencoded({extended: false }))
+
 //ROUTES
 //INDUCES => INDEX, NEW, DELETE, UPDATE, CREATE, EDIT, SHOW
 //MVC => Model, View, Controller
@@ -27,7 +31,22 @@ app.get("/stocks", (req, res) => {
   res.send(stocks);
 });
 
+app.get("/stocks/new", (req, res) => {
+  res.render('new.ejs');
+});
 
+
+//CREATE: take something on the frontend and do something with it in the backend
+app.post('/stocks', (req, res)=>{
+  //req.body holds form data {username: "qs", password: "qs"}
+  console.log(req.body)
+  stocks.push(req.body)
+  // res.send(stocks)=======>post data on the terminal and postman
+
+  res.redirect('/')
+})
+
+//SHOW ROUTE: THIS ROUTE DISPLAY INDIVIDUAL DATA ON THE BROWSER
 app.get("/stocks/:name", (req, res) => {
   const name = req.params.name;
   //with find()
@@ -35,13 +54,17 @@ app.get("/stocks/:name", (req, res) => {
 
   //with for loop
   let stock;
-  for(let i = 0; i < stocks.length; i++){
-    if(stocks[i].name.toLowerCase() === name.toLowerCase()){
-        stock = stocks[i]
+  for (let i = 0; i < stocks.length; i++) {
+    if (stocks[i].name.toLowerCase() === name.toLowerCase()) {
+      stock = stocks[i];
     }
   }
- console.log(stock);
-  res.render("show.ejs", {stock});
+
+  //set the profit before sending to show page
+  console.log(stock);
+  stock.profit = stock.closingPrice - stock.purchasePrice;
+
+  res.render("show.ejs", { stock });
 });
 
 //CATCH ALL ROUTES ERRORS
