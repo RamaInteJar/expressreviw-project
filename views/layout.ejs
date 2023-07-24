@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DUMMY STOCKS DATA</title>
+    <title>Stocks</title>
   </head>
   <body>
-    <h1>STOCKS</h1>
-    <% stocks.forEach((stock)=>{%> 
-        <%- include('stockPartial.ejs', {stock}) %>
-    <%})%>
+    <h1>STOCKS DATA</h1>
+    <h2><%- include('navbar.ejs') %></h2>
+
+    <%- body %>
+    <footer>Socks &copy; 2023</footer>
   </body>
 </html>
