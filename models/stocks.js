@@ -32,3 +32,5 @@ const stocks = [
       day: "2023-07-22",
     },
   ];
+
+  module.exports = stocks
