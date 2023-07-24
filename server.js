@@ -17,7 +17,7 @@ app.set('view engine', 'ejs')
 //INDEX ROUTES
 app.get('/', (req, res)=>{
     // res.send(`J'ai besoin d'argent et j'en ai besoin maintenant`)
-    res.render('index')
+    res.render('index', {stocks})
 })
 
 
