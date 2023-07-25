@@ -9,6 +9,7 @@ const expressEjsLayouts = require("express-ejs-layouts");
 //MIDDLEWARE
 app.set("view engine", "ejs");
 app.use(expressEjsLayouts);
+app.use(express.static('public'))
 
 //THERE IS A MIDDLEWARE THAT HNDLES FORM DATA, WITHOUT IT, YOU CAN NOT HANDLE FORM DATA
 //FORM DATA COMES THROUGHT req.body
